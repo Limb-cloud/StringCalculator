@@ -80,18 +80,10 @@ class Calculator {
 
     // Вычесляем результат
     switch (actions[actionIndex]) {
-      case "+":
-        result = a + b;
-        break;
-      case "-":
-        result = a - b;
-        break;
-      case "/":
-        result = a / b;
-        break;
-      case "*":
-        result = a * b;
-        break;
+      case "+" -> result = a + b;
+      case "-" -> result = a - b;
+      case "/" -> result = a / b;
+      case "*" -> result = a * b;
     }
 
     // Смотрим в какой системе исчесления число было изначально
