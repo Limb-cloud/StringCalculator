@@ -122,10 +122,10 @@ class Converter {
     char[] arr = s.toCharArray(); // Разбиваем римское число на числа
     int[] arabian = new int[0];
 
-    // Находим по отдельности орабские числа
-    for (int i = 0; i < arr.length; i++) {
+    // Находим по отдельности арабские числа
+    for (char c : arr) {
       for (int j = 0; j < keyRoman.length; j++) {
-        if (arr[i] == valRoman[j]) {
+        if (c == valRoman[j]) {
           arabian = append(arabian, keyRoman[j]);
           break;
         }
@@ -149,7 +149,7 @@ class Converter {
   // Метод для конвертации арабского числа в римскую систему исчесления
   static String converterArabianInRoman(int arabian) {
 
-    String result = "";
+    StringBuilder result = new StringBuilder();
     int arabianKey = 0;
 
     // Работает пока арабское число не будет равно 0
@@ -165,10 +165,10 @@ class Converter {
 
       // Вычисляем римское число
       arabian -= keyRomanPattern[arabianKey];
-      result += valRomanPattern[arabianKey];
+      result.append(valRomanPattern[arabianKey]);
     } while (arabian != 0);
 
-    return result;
+    return result.toString();
   }
 
   // Метод для проверки на римское число
@@ -177,20 +177,16 @@ class Converter {
     int count = 0;
 
     // Проверяем на корректность символов в строке которая является одним числом
-    for (int i = 0; i < arr.length; i++) {
-      for (int j = 0; j < valRoman.length; j++) {
-        if (arr[i] == valRoman[j]) {
+    for (char c : arr) {
+      for (char value : valRoman) {
+        if (c == value) {
           ++count;
         }
       }
     }
 
     // count должен быть равен длине строки
-    if (count == arr.length) {
-      return true;
-    }
-
-    return false;
+    return count == arr.length;
   }
 
   // Метод для проверки на арабское число
